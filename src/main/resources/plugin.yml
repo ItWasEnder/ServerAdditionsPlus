@@ -1,0 +1,6 @@
+name: SolarisAdditions
+version: '${project.version}'
+main: me.endergaming.solarisadditions.SolarisAdditions
+api-version: 1.16
+depend: [EnderLibs]
+authors: [EnderGamingYT]

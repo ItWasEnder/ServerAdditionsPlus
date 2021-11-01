@@ -1,0 +1,36 @@
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+#    _____       _            _                   _     _ _ _   _                     #
+#   / ____|     | |          (_)         /\      | |   | (_) | (_)                    #
+#  | (___   ___ | | __ _ _ __ _ ___     /  \   __| | __| |_| |_ _  ___  _ __  ___     #
+#   \___ \ / _ \| |/ _` | '__| / __|   / /\ \ / _` |/ _` | | __| |/ _ \| '_ \/ __|    #
+#   ____) | (_) | | (_| | |  | \__ \  / ____ \ (_| | (_| | | |_| | (_) | | | \__ \    #
+#  |_____/ \___/|_|\__,_|_|  |_|___/ /_/    \_\__,_|\__,_|_|\__|_|\___/|_| |_|___/    #
+#                                                                                     #
+#               Created by EnderGamingYT              Ver. 1.4                        #
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+lunar-client:
+  enabled: true
+# This module will not drop money from mobs spawned from placed spawners
+money-from-mobs:
+  enabled: true
+  # If levelled-mobs is enabled this will increase the money drop chance
+  levelled-mob-chance: 0.07
+  # Mobs from spawners will drop less money
+  spawner-nerf: 1.35
+  # If placed mob spawners should spawn mobs that can drop money
+  restrict-spawners: true
+# This module enables universal /speed command
+cmi:
+  enabled: true
+# Enabled basic placeholder-api implementation
+placeholder-api:
+  enabled: true
+# This module adds a "CombatLevel" based on multiple skills
+mcmmo:
+  enabled: true
+# This module will drop more experience based on mob level (McMMO compatible)
+levelled-mobs:
+  enabled: true
+
+# DO NOT TOUCH!!
+debug: false
