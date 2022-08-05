@@ -9,6 +9,8 @@ public class KQManager extends Addon {
         super(instance, "Konquest", reqPlugin, reqManagers);
     }
 
+//     TODO:
+//          - Disable breaking town blocks outside of monument during raid
     @Override
     public void onEnable() {
 
