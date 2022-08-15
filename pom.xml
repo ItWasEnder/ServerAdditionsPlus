@@ -124,6 +124,14 @@
             <scope>system</scope>
             <systemPath>${basedir}/lib/mcMMO.jar</systemPath>
         </dependency>
+        <!-- Konquest -->
+        <dependency>
+            <groupId>konquest</groupId>
+            <artifactId>Konquest</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/Konquest-0.10.1.jar</systemPath>
+        </dependency>
         <!-- LevelledMobs -->
         <dependency>
             <groupId>com.github.lokka30</groupId>

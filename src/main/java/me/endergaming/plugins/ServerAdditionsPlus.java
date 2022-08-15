@@ -1,6 +1,7 @@
 package me.endergaming.plugins;
 
 import me.endergaming.enderlibs.text.MessageUtils;
+import me.endergaming.plugins.addons.konquest.KQManager;
 import me.endergaming.plugins.commands.CommandRegistry;
 import me.endergaming.plugins.addons.backend.AddonManager;
 import me.endergaming.plugins.addons.cmi.CMIManager;
@@ -40,20 +41,29 @@ public final class ServerAdditionsPlus extends JavaPlugin {
         if (LUNAR_CLIENT) {
             new LCManager(this, "LunarClient-API", "CMIManager");
         }
+
         if (MONEY_FROM_MOBS) {
             new MFMManager(this, "MoneyFromMobs");
         }
+
         if (CMI) {
             new CMIManager(this, "CMI");
         }
+
         if (PLACEHOLDER_API) {
             new PlaceholderManager(this, "PlaceholderAPI");
         }
+
         if (MCMMO) {
             new MCMMOManager(this, "mcMMO");
         }
+
         if (LEVELLED_MOBS) {
             new LMManager(this, "LevelledMobs");
+        }
+
+        if (KONQUEST) {
+            new KQManager(this, "Konquest");
         }
     }
 
@@ -70,7 +80,7 @@ public final class ServerAdditionsPlus extends JavaPlugin {
      */
     public static void debug(String msg) {
         if (DEBUG) {
-            MessageUtils.log(WARNING, msg, "[DEBUG@ServerAdditionsPlus] ");
+            MessageUtils.log(WARNING, msg, "DEBUG@ServerAdditionsPlus");
         }
     }
 

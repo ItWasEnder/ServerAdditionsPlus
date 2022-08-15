@@ -9,10 +9,10 @@
 #               Created by EnderGamingYT              Ver. 1.4                        #
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 lunar-client:
-  enabled: true
+  enabled: false
 # This module will not drop money from mobs spawned from placed spawners
 money-from-mobs:
-  enabled: true
+  enabled: false
   # If levelled-mobs is enabled this will increase the money drop chance
   levelled-mob-chance: 0.07
   # Mobs from spawners will drop less money
@@ -24,13 +24,16 @@ cmi:
   enabled: true
 # Enabled basic placeholder-api implementation
 placeholder-api:
-  enabled: true
+  enabled: false
 # This module adds a "CombatLevel" based on multiple skills
 mcmmo:
-  enabled: true
+  enabled: false
 # This module will drop more experience based on mob level (McMMO compatible)
 levelled-mobs:
-  enabled: true
+  enabled: false
+# Enabled custom loot and other features in Konquest plugin
+konquest:
+  enabled: false
 
 # DO NOT TOUCH!!
 debug: false
