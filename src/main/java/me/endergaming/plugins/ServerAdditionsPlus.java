@@ -2,15 +2,16 @@ package me.endergaming.plugins;
 
 import me.endergaming.enderlibs.text.MessageUtils;
 import me.endergaming.plugins.addons.konquest.KQManager;
+import me.endergaming.plugins.addons.skills.SkillsManager;
 import me.endergaming.plugins.commands.CommandRegistry;
 import me.endergaming.plugins.addons.backend.AddonManager;
 import me.endergaming.plugins.addons.cmi.CMIManager;
 import me.endergaming.plugins.addons.levelledmobs.LMManager;
 import me.endergaming.plugins.addons.lunarclient.LCManager;
-import me.endergaming.plugins.addons.mcmmo.MCMMOManager;
 import me.endergaming.plugins.addons.moneyfrommobs.MFMManager;
 import me.endergaming.plugins.addons.papi.PlaceholderManager;
 import me.endergaming.plugins.controllers.ConfigController;
+import me.endergaming.plugins.misc.Globals;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -39,31 +40,31 @@ public final class ServerAdditionsPlus extends JavaPlugin {
 
     private void registerManagers() {
         if (LUNAR_CLIENT) {
-            new LCManager(this, "LunarClient-API", "CMIManager");
+            new LCManager(this, Globals.Plugins.LUNAR_CLIENT, Globals.Addons.CMIManager.name);
         }
 
         if (MONEY_FROM_MOBS) {
-            new MFMManager(this, "MoneyFromMobs");
+            new MFMManager(this, Globals.Plugins.MONEY_FROM_MOBS);
         }
 
         if (CMI) {
-            new CMIManager(this, "CMI");
+            new CMIManager(this, Globals.Plugins.CMI);
         }
 
         if (PLACEHOLDER_API) {
-            new PlaceholderManager(this, "PlaceholderAPI");
+            new PlaceholderManager(this, Globals.Plugins.PLACEHOLDER_API);
         }
 
-        if (MCMMO) {
-            new MCMMOManager(this, "mcMMO");
+        if (SKILLS) {
+            new SkillsManager(this, Globals.Plugins.AURELIUM_SKILLS, Globals.Addons.LMManager.name);
         }
 
         if (LEVELLED_MOBS) {
-            new LMManager(this, "LevelledMobs");
+            new LMManager(this, Globals.Plugins.LEVELLED_MOBS);
         }
 
         if (KONQUEST) {
-            new KQManager(this, "Konquest");
+            new KQManager(this, Globals.Plugins.KONQUEST);
         }
     }
 

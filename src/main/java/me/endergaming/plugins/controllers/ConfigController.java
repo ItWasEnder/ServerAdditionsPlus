@@ -12,6 +12,7 @@ public class ConfigController {
     public static boolean CMI = false;
     public static boolean PLACEHOLDER_API = false;
     public static boolean MCMMO = false;
+    public static boolean SKILLS = false;
     public static boolean LEVELLED_MOBS = false;
     public static boolean RESTRICT_SPAWNERS = false;
     public static boolean KONQUEST = false;
@@ -39,6 +40,8 @@ public class ConfigController {
         PLACEHOLDER_API = this.getState("placeholder-api.enabled");
 
         MCMMO = this.getState("mcmmo.enabled");
+
+        SKILLS = this.getState("skills.enabled");
 
         LEVELLED_MOBS = this.getState("levelled-mobs.enabled");
 

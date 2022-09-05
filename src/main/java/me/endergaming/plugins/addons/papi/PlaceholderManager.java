@@ -2,12 +2,13 @@ package me.endergaming.plugins.addons.papi;
 
 import me.endergaming.plugins.ServerAdditionsPlus;
 import me.endergaming.plugins.addons.backend.Addon;
+import me.endergaming.plugins.misc.Globals;
 import org.jetbrains.annotations.NotNull;
 
 public class PlaceholderManager extends Addon {
     private PlaceholderAPIHook hook;
 
-    public PlaceholderManager(@NotNull final ServerAdditionsPlus instance, @NotNull String reqPlugin) {
+    public PlaceholderManager(@NotNull final ServerAdditionsPlus instance, @NotNull Globals.Plugins reqPlugin) {
         super(instance, "placeholders", reqPlugin);
     }
 

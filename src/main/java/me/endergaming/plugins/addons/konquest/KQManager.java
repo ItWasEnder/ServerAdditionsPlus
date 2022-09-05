@@ -7,6 +7,7 @@ import me.endergaming.plugins.ServerAdditionsPlus;
 import me.endergaming.plugins.addons.backend.Addon;
 import me.endergaming.plugins.addons.backend.exceptions.AddonException;
 import me.endergaming.plugins.addons.backend.exceptions.AddonRegistrationException;
+import me.endergaming.plugins.misc.Globals;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
@@ -17,7 +18,7 @@ public class KQManager extends Addon {
     private HashMap<ItemStack, Integer> lootTable;
     private Konquest kon;
 
-    public KQManager(@NotNull final ServerAdditionsPlus instance, @NotNull String reqPlugin, @NotNull String... reqManagers) {
+    public KQManager(@NotNull final ServerAdditionsPlus instance, @NotNull Globals.Plugins reqPlugin, @NotNull String... reqManagers) {
         super(instance, "Konquest", reqPlugin, reqManagers);
     }
 

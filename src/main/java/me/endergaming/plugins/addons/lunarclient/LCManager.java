@@ -4,6 +4,7 @@ import me.endergaming.enderlibs.file.FileUtils;
 import me.endergaming.enderlibs.misc.Task;
 import me.endergaming.plugins.ServerAdditionsPlus;
 import me.endergaming.plugins.addons.backend.Addon;
+import me.endergaming.plugins.misc.Globals;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -31,7 +32,7 @@ public class LCManager extends Addon {
     private Task saveTask;
     private double reward;
 
-    public LCManager(@NotNull final ServerAdditionsPlus instance, @NotNull String reqPlugin, @NotNull String... reqManagers) {
+    public LCManager(@NotNull final ServerAdditionsPlus instance, @NotNull Globals.Plugins reqPlugin, @NotNull String... reqManagers) {
         super(instance, "lunar-client", reqPlugin, reqManagers);
     }
 

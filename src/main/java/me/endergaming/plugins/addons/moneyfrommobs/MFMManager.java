@@ -5,6 +5,7 @@ import me.endergaming.enderlibs.misc.LocationUtils;
 import me.endergaming.enderlibs.misc.Task;
 import me.endergaming.plugins.ServerAdditionsPlus;
 import me.endergaming.plugins.addons.backend.Addon;
+import me.endergaming.plugins.misc.Globals;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.CreatureSpawner;
@@ -35,7 +36,7 @@ public class MFMManager extends Addon {
     private File dataFile;
     private Task saveTask;
 
-    public MFMManager(@NotNull final ServerAdditionsPlus instance, @NotNull String reqPlugin) {
+    public MFMManager(@NotNull final ServerAdditionsPlus instance, @NotNull Globals.Plugins reqPlugin) {
         super(instance, "money-from-mobs", reqPlugin);
     }
 

@@ -5,7 +5,8 @@ import me.endergaming.plugins.ServerAdditionsPlus;
 import me.endergaming.plugins.addons.backend.Addon;
 import me.endergaming.plugins.addons.backend.AddonManager;
 import me.endergaming.plugins.addons.backend.events.AddonRegisterEvent;
-import me.endergaming.plugins.addons.mcmmo.MCMMOManager;
+import me.endergaming.plugins.addons.skills.SkillsManager;
+import me.endergaming.plugins.misc.Globals;
 import me.lokka30.levelledmobs.LevelInterface;
 import me.lokka30.levelledmobs.LevelledMobs;
 import org.bukkit.Bukkit;
@@ -16,13 +17,13 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-import static me.endergaming.plugins.controllers.ConfigController.MCMMO;
+import static me.endergaming.plugins.controllers.ConfigController.SKILLS;
 
 public class LMManager extends Addon {
     private Listener listener;
     private LevelInterface levelInterface;
 
-    public LMManager(@NotNull final ServerAdditionsPlus instance, @NotNull String reqPlugin, @NotNull String... reqManagers) {
+    public LMManager(@NotNull final ServerAdditionsPlus instance, @NotNull Globals.Plugins reqPlugin, @NotNull String... reqManagers) {
         super(instance, "levelled-mobs", reqPlugin, reqManagers);
     }
 
@@ -35,17 +36,17 @@ public class LMManager extends Addon {
             HandlerList.unregisterAll(this.listener);
         }
         // Register EXP or McMMO xp drop enhancements
-        if (MCMMO) {
-            if (!AddonManager.isRegistered("MCMMOManager")) {
+        if (SKILLS) {
+            if (!AddonManager.isRegistered(Globals.Addons.SkillsManager.name)) {
                 new EventListener<>(AddonRegisterEvent.class, (l, e) -> {
-                    if (!e.getAddon().getName().equals("MCMMOManager")) {
+                    if (!e.getAddon().getName().equals(Globals.Addons.SkillsManager.name)) {
                         return;
                     }
-                    this.registerMcMMO();
+                    this.registerListener();
                     l.unregister();
                 });
             } else {
-                this.registerMcMMO();
+                this.registerListener();
             }
         } else {
             this.listener = new DropXPListener(this);
@@ -53,11 +54,13 @@ public class LMManager extends Addon {
         }
     }
 
-    private void registerMcMMO() {
+    private void registerListener() {
         if (this.listener != null) {
             HandlerList.unregisterAll(this.listener);
         }
-        this.listener = new MMOExperienceListener((MCMMOManager) AddonManager.getManagerByAlias("mcmmo"), this);
+
+        ServerAdditionsPlus.debug("Registering SkillsManager listener");
+        this.listener = new SkillExperienceListener((SkillsManager) AddonManager.getManagerByAlias("skills"), this);
         Bukkit.getPluginManager().registerEvents(this.listener, this.getPlugin());
     }
 

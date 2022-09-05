@@ -6,6 +6,7 @@ import me.endergaming.enderlibs.text.MessageUtils;
 import me.endergaming.plugins.ServerAdditionsPlus;
 import me.endergaming.plugins.addons.backend.events.AddonRegisterEvent;
 import me.endergaming.plugins.addons.backend.exceptions.AddonException;
+import me.endergaming.plugins.misc.Globals;
 import org.bukkit.Bukkit;
 import org.bukkit.event.server.PluginEnableEvent;
 import org.jetbrains.annotations.NotNull;
@@ -26,22 +27,22 @@ public abstract class Addon {
     final List<String> requirements = new ArrayList<>();
     boolean registered = false;
 
-    protected Addon(@NotNull final ServerAdditionsPlus instance, @NotNull String alias, @NotNull String reqPlugin) {
+    protected Addon(@NotNull final ServerAdditionsPlus instance, @NotNull String alias, Globals.Plugins reqPlugin) {
         String[] split = this.getClass().getName().split("\\.");
         this.name = split[split.length - 1];
         this.managerAlias = alias;
-        this.requiredPlugin = reqPlugin;
+        this.requiredPlugin = reqPlugin.name;
         this.plugin = instance;
         this.initRegister();
         // Add manager to AddonManager
         AddonManager.add(this);
     }
 
-    protected Addon(@NotNull final ServerAdditionsPlus instance, @NotNull String alias, @NotNull String reqPlugin, String... manReqs) {
+    protected Addon(@NotNull final ServerAdditionsPlus instance, @NotNull String alias, Globals.Plugins reqPlugin, String... manReqs) {
         String[] split = this.getClass().getName().split("\\.");
         this.name = split[split.length - 1];
         this.managerAlias = alias;
-        this.requiredPlugin = reqPlugin;
+        this.requiredPlugin = reqPlugin.name;
         this.plugin = instance;
         this.requirements.addAll(Arrays.asList(manReqs));
         // Create call-back listener for manager requirements

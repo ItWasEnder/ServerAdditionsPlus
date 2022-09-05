@@ -2,5 +2,5 @@ name: ServerAdditionsPlus
 version: '${project.version}'
 main: me.endergaming.plugins.ServerAdditionsPlus
 api-version: 1.18
-depend: [ EnderLibs ]
+softdepend: [ EnderLibs ]
 authors: [ EnderGamingYT ]
