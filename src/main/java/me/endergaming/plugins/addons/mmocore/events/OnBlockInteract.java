@@ -50,10 +50,12 @@ public class OnBlockInteract implements EventListener {
 
         int playerLevel = this.manager.getLevel(event.getPlayer().getUniqueId());
 
+        System.out.println("Player level: " + playerLevel + " | Required level: " + requiredLevel);
+
         if (playerLevel < requiredLevel) {
             event.setCancelled(true);
 
-            Text.of("&7[&#FF4F54⛏&7] &#FF4F54Insufficient mining level! &8(&e%s&8)".formatted(requiredLevel)).send(event.getPlayer());
+            Text.of("&7[&#FFB03F⛏&7] &#FF4F54Insufficient mining level! &8(&e%s&8)".formatted(requiredLevel)).send(event.getPlayer());
 
             PotionEffectType.SLOW_DIGGING.createEffect(20, 9)
                     .withParticles(false)
