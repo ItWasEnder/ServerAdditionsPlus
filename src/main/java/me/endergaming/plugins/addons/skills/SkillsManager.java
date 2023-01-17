@@ -4,7 +4,7 @@ import com.archyx.aureliumskills.AureliumSkills;
 import com.archyx.aureliumskills.data.PlayerData;
 import com.archyx.aureliumskills.skills.Skills;
 import me.endergaming.plugins.ServerAdditionsPlus;
-import me.endergaming.plugins.addons.backend.Addon;
+import me.endergaming.plugins.backend.Addon;
 import me.endergaming.plugins.misc.Globals;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

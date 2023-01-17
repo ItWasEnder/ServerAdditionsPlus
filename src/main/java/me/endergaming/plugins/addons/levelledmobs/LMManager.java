@@ -2,9 +2,9 @@ package me.endergaming.plugins.addons.levelledmobs;
 
 import me.endergaming.enderlibs.misc.EventListener;
 import me.endergaming.plugins.ServerAdditionsPlus;
-import me.endergaming.plugins.addons.backend.Addon;
-import me.endergaming.plugins.addons.backend.AddonManager;
-import me.endergaming.plugins.addons.backend.events.AddonRegisterEvent;
+import me.endergaming.plugins.backend.Addon;
+import me.endergaming.plugins.backend.AddonManager;
+import me.endergaming.plugins.backend.events.AddonRegisterEvent;
 import me.endergaming.plugins.addons.skills.SkillsManager;
 import me.endergaming.plugins.misc.Globals;
 import me.lokka30.levelledmobs.LevelInterface;

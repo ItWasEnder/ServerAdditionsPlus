@@ -3,7 +3,7 @@ package me.endergaming.plugins.addons.moneyfrommobs;
 import me.chocolf.moneyfrommobs.api.event.AttemptToDropMoneyEvent;
 import me.chocolf.moneyfrommobs.api.event.DropMoneyEvent;
 import me.endergaming.plugins.ServerAdditionsPlus;
-import me.endergaming.plugins.addons.backend.AddonManager;
+import me.endergaming.plugins.backend.AddonManager;
 import me.endergaming.plugins.addons.levelledmobs.LMManager;
 import org.bukkit.Material;
 import org.bukkit.block.CreatureSpawner;

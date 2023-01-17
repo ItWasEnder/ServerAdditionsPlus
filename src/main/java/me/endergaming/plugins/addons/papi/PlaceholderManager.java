@@ -1,7 +1,7 @@
 package me.endergaming.plugins.addons.papi;
 
 import me.endergaming.plugins.ServerAdditionsPlus;
-import me.endergaming.plugins.addons.backend.Addon;
+import me.endergaming.plugins.backend.Addon;
 import me.endergaming.plugins.misc.Globals;
 import org.jetbrains.annotations.NotNull;
 

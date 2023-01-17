@@ -4,7 +4,7 @@ import me.endergaming.enderlibs.text.MessageUtils;
 import me.endergaming.plugins.addons.konquest.KQManager;
 import me.endergaming.plugins.addons.skills.SkillsManager;
 import me.endergaming.plugins.commands.CommandRegistry;
-import me.endergaming.plugins.addons.backend.AddonManager;
+import me.endergaming.plugins.backend.AddonManager;
 import me.endergaming.plugins.addons.cmi.CMIManager;
 import me.endergaming.plugins.addons.levelledmobs.LMManager;
 import me.endergaming.plugins.addons.lunarclient.LCManager;

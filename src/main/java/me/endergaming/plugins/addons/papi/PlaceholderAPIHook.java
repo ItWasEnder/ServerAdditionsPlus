@@ -2,13 +2,11 @@ package me.endergaming.plugins.addons.papi;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import me.endergaming.plugins.ServerAdditionsPlus;
-import me.endergaming.plugins.addons.backend.AddonManager;
+import me.endergaming.plugins.backend.AddonManager;
 import me.endergaming.plugins.addons.skills.SkillsManager;
 import org.apache.commons.lang.math.NumberUtils;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-
-import java.text.DecimalFormat;
 
 public class PlaceholderAPIHook extends PlaceholderExpansion {
     private final ServerAdditionsPlus plugin;

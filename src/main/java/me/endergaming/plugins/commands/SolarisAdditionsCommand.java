@@ -2,7 +2,7 @@ package me.endergaming.plugins.commands;
 
 import me.endergaming.enderlibs.command.MainCommand;
 import me.endergaming.plugins.ServerAdditionsPlus;
-import me.endergaming.plugins.addons.backend.AddonManager;
+import me.endergaming.plugins.backend.AddonManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;

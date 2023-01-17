@@ -1,4 +1,4 @@
-package me.endergaming.plugins.addons.backend;
+package me.endergaming.plugins.backend;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

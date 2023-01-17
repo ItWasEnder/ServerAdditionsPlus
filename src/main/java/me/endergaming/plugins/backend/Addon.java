@@ -1,11 +1,11 @@
-package me.endergaming.plugins.addons.backend;
+package me.endergaming.plugins.backend;
 
 import me.endergaming.enderlibs.misc.EventListener;
 import me.endergaming.enderlibs.misc.Task;
 import me.endergaming.enderlibs.text.MessageUtils;
 import me.endergaming.plugins.ServerAdditionsPlus;
-import me.endergaming.plugins.addons.backend.events.AddonRegisterEvent;
-import me.endergaming.plugins.addons.backend.exceptions.AddonException;
+import me.endergaming.plugins.backend.events.AddonRegisterEvent;
+import me.endergaming.plugins.backend.exceptions.AddonException;
 import me.endergaming.plugins.misc.Globals;
 import org.bukkit.Bukkit;
 import org.bukkit.event.server.PluginEnableEvent;

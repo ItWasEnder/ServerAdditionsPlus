@@ -1,4 +1,4 @@
-package me.endergaming.plugins.addons.backend.exceptions;
+package me.endergaming.plugins.backend.exceptions;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableList;

@@ -3,7 +3,7 @@ package me.endergaming.plugins.addons.lunarclient;
 import me.endergaming.enderlibs.file.FileUtils;
 import me.endergaming.enderlibs.misc.Task;
 import me.endergaming.plugins.ServerAdditionsPlus;
-import me.endergaming.plugins.addons.backend.Addon;
+import me.endergaming.plugins.backend.Addon;
 import me.endergaming.plugins.misc.Globals;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;

@@ -1,4 +1,4 @@
-package me.endergaming.plugins.addons.backend.exceptions;
+package me.endergaming.plugins.backend.exceptions;
 
 public class AddonRegistrationException extends AddonException {
     public AddonRegistrationException(String err) {

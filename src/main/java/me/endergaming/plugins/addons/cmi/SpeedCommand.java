@@ -2,8 +2,8 @@ package me.endergaming.plugins.addons.cmi;
 
 import me.endergaming.enderlibs.command.MainCommand;
 import me.endergaming.enderlibs.text.MessageUtils;
-import me.endergaming.plugins.addons.backend.Addon;
-import me.endergaming.plugins.addons.backend.AddonManager;
+import me.endergaming.plugins.backend.Addon;
+import me.endergaming.plugins.backend.AddonManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

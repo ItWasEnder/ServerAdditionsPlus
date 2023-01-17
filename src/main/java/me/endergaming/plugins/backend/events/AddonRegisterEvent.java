@@ -1,6 +1,6 @@
-package me.endergaming.plugins.addons.backend.events;
+package me.endergaming.plugins.backend.events;
 
-import me.endergaming.plugins.addons.backend.Addon;
+import me.endergaming.plugins.backend.Addon;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
