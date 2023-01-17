@@ -1,6 +1,5 @@
 package me.endergaming.plugins.controllers;
 
-import me.endergaming.enderlibs.file.FileUtils;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class ConfigController {
@@ -21,7 +20,7 @@ public class ConfigController {
 
 
     public void init() {
-        this.config = FileUtils.getConfig("config", "yml");
+//        this.config = FileUtils.getConfig("config", "yml");
         this.read();
     }
 

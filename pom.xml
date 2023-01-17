@@ -23,20 +23,11 @@
             <version>1.18.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
-        <!-- EnderLibs -->
+        <!-- Plus -->
         <dependency>
-            <groupId>me.endergaming</groupId>
-            <artifactId>EnderLibs</artifactId>
-            <version>0.3.2</version>
-            <scope>compile</scope>
-        </dependency>
-        <!-- Money From Mobs -->
-        <dependency>
-            <groupId>me.chocolf</groupId>
-            <artifactId>MoneyFromMobs</artifactId>
-            <version>4.3</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/MoneyFromMobs.jar</systemPath>
+            <groupId>com.marcusslover</groupId>
+            <artifactId>plus</artifactId>
+            <version>3.4-SNAPSHOT</version>
         </dependency>
         <!-- PlaceholderAPI -->
         <dependency>
@@ -44,44 +35,6 @@
             <artifactId>placeholderapi</artifactId>
             <version>2.10.9</version>
             <scope>provided</scope>
-        </dependency>
-        <!-- CMI -->
-        <dependency>
-            <groupId>com.Zrips.CMI</groupId>
-            <artifactId>CMI</artifactId>
-            <version>9.0.4.1</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/CMI9.0.4.1.jar</systemPath>
-        </dependency>
-        <!-- LunarClient -->
-        <dependency>
-            <groupId>com.lunarclient</groupId>
-            <artifactId>BukkitAPI</artifactId>
-            <version>v1.0.1</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/lunarapi.jar</systemPath>
-        </dependency>
-        <!-- AureliumSkills -->
-        <dependency>
-            <groupId>com.github.Archy-X</groupId>
-            <artifactId>AureliumSkills</artifactId>
-            <version>Beta1.3.7</version>
-        </dependency>
-        <!-- Konquest -->
-        <dependency>
-            <groupId>konquest</groupId>
-            <artifactId>Konquest</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/Konquest-0.10.1.jar</systemPath>
-        </dependency>
-        <!-- LevelledMobs -->
-        <dependency>
-            <groupId>com.github.lokka30</groupId>
-            <artifactId>LevelledMobs</artifactId>
-            <version>3.4.1</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/lib/LevelledMobs-3.4.1.jar</systemPath>
         </dependency>
     </dependencies>
 
@@ -102,9 +55,14 @@
             <id>placeholderapi</id>
             <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
         </repository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>
     </repositories>
 
     <build>
+        <defaultGoal>clean package</defaultGoal>
         <finalName>${project.name}-${project.version}</finalName>
         <plugins>
             <plugin>

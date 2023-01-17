@@ -2,6 +2,9 @@ package me.endergaming.plugins.misc;
 
 public class Globals {
     public static final String CURRENCY_1 = "MC";
+    public static final String PLUGIN_KEY = "sap";
+
+    public static final String PREFIX = "&7[&a\uD83E\uDDEA&7] ";
 
     public enum Plugins {
         CMI("CMI"),

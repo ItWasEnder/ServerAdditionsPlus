@@ -1,8 +1,7 @@
 package me.endergaming.plugins.backend;
 
-import me.endergaming.enderlibs.misc.EventListener;
-import me.endergaming.enderlibs.misc.Task;
-import me.endergaming.enderlibs.text.MessageUtils;
+import com.marcusslover.plus.lib.task.Task;
+import com.marcusslover.plus.lib.util.EventListener;
 import me.endergaming.plugins.ServerAdditionsPlus;
 import me.endergaming.plugins.backend.events.AddonRegisterEvent;
 import me.endergaming.plugins.backend.exceptions.AddonException;
@@ -143,7 +142,7 @@ public abstract class Addon {
         try {
             this.onEnable();
         } catch (AddonException e) {
-            MessageUtils.log(MessageUtils.LogLevel.SEVERE, "Failed to register " + this.name + ": " + Arrays.toString(e.getMessages().toArray()));
+            ServerAdditionsPlus.logger().severe("Failed to register " + this.name + ": " + Arrays.toString(e.getMessages().toArray()));
         }
     }
 
