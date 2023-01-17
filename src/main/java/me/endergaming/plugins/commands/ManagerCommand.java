@@ -38,53 +38,14 @@ public class ManagerCommand implements ICommand {
         var sender = commandContext.sender();
         var args = commandContext.args();
 
+        if (this.debug(commandContext)) {
+            return true;
+        }
+
         if (args.length < 2) {
             Text.of("&b* Manage all custom additions on the server" +
                     "\n&bUsage: &3/sa &b[managers/debug] &7- &fBase Admin Command")
                     .send(sender);
-            return false;
-        }
-
-        if (args[0].equalsIgnoreCase("debug")) {
-            PluginManager pm = Bukkit.getPluginManager();
-            List<String> list = Arrays.stream(pm.getPlugins()).map(Plugin::getName).collect(Collectors.toList());
-            StringBuilder plugins = new StringBuilder("Plugins: ");
-
-            for (int i = 0; i < list.size(); i++) {
-                plugins.append(list.get(i)).append(" v").append(pm.getPlugin(list.get(i)).getDescription().getVersion());
-                if (i != list.size() - 1) {
-                    plugins.append(", ");
-                }
-            }
-
-            Component pluginPart = Component.text("(Click to Copy)")
-                    .hoverEvent(HoverEvent.showText(Text.of("&e~copy~").comp()))
-                    .color(TextColor.color(170, 170, 170))
-                    .clickEvent(ClickEvent.copyToClipboard(plugins.toString()));
-
-            Component finalPluginPart = Text.of("&dPlugins: " + pm.getPlugins().length + " ").comp()
-                    .append(pluginPart);
-
-            String version = "Version: " + Bukkit.getVersion();
-            String saVersion = "SA Version: " + this.plugin.getDescription().getVersion();
-            String sys = "System: " + System.getProperty("os.name");
-            String java = "Java: " + System.getProperty("java.version");
-
-            Component copyDebug = Component.text("(Click to Copy)")
-                    .hoverEvent(HoverEvent.showText(Text.of("&e~copy~").comp()))
-                    .color(TextColor.color(170, 170, 170))
-                    .clickEvent(ClickEvent.copyToClipboard(version + "\n" + sys + "\n" + java + "\n" + saVersion + "\n" + plugins + "\n"));
-
-            Component debugPart = Text.of("&8Debug Data: ").comp();
-            debugPart = debugPart.append(copyDebug);
-            Text.of("&b&m                         ").send(sender);
-            Text.of(debugPart).send(sender);
-            Text.of("&a" + sys).send(sender);
-            Text.of("&c" + java).send(sender);
-            Text.of("&e" + version).send(sender);
-            Text.of("&f" + saVersion).send(sender);
-            Text.of(finalPluginPart).send(sender);
-            Text.of("&b&m                         ").send(sender);
             return false;
         }
 
@@ -160,8 +121,65 @@ public class ManagerCommand implements ICommand {
         return false;
     }
 
+    private boolean debug(CommandContext context) {
+        var sender = context.sender();
+        var args = context.args();
+
+        if (args.length < 1) {
+            Text.of("&b* Manage all custom additions on the server" +
+                    "\n&bUsage: &3/sa &b[managers/debug] &7- &fBase Admin Command")
+                    .send(sender);
+            return false;
+        }
+
+        if (args[0].equalsIgnoreCase("debug")) {
+            PluginManager pm = Bukkit.getPluginManager();
+            List<String> list = Arrays.stream(pm.getPlugins()).map(Plugin::getName).collect(Collectors.toList());
+            StringBuilder plugins = new StringBuilder("Plugins: ");
+
+            for (int i = 0; i < list.size(); i++) {
+                plugins.append(list.get(i)).append(" v").append(pm.getPlugin(list.get(i)).getDescription().getVersion());
+                if (i != list.size() - 1) {
+                    plugins.append(", ");
+                }
+            }
+
+            Component pluginPart = Component.text("(Click to Copy)")
+                    .hoverEvent(HoverEvent.showText(Text.of("&e~copy~").comp()))
+                    .color(TextColor.color(170, 170, 170))
+                    .clickEvent(ClickEvent.copyToClipboard(plugins.toString()));
+
+            Component finalPluginPart = Text.of("&dPlugins: " + pm.getPlugins().length + " ").comp()
+                    .append(pluginPart);
+
+            String version = "Version: " + Bukkit.getVersion();
+            String saVersion = "S.A.P Version: " + this.plugin.getDescription().getVersion();
+            String sys = "System: " + System.getProperty("os.name");
+            String java = "Java: " + System.getProperty("java.version");
+
+            Component copyDebug = Component.text("(Click to Copy)")
+                    .hoverEvent(HoverEvent.showText(Text.of("&e~copy~").comp()))
+                    .color(TextColor.color(170, 170, 170))
+                    .clickEvent(ClickEvent.copyToClipboard(version + "\n" + sys + "\n" + java + "\n" + saVersion + "\n" + plugins + "\n"));
+
+            Component debugPart = Text.of("&8Debug Data: ").comp();
+            debugPart = debugPart.append(copyDebug);
+            Text.of("&b&m                         ").send(sender);
+            Text.of(debugPart).send(sender);
+            Text.of("&a" + sys).send(sender);
+            Text.of("&c" + java).send(sender);
+            Text.of("&e" + version).send(sender);
+            Text.of("&f" + saVersion).send(sender);
+            Text.of(finalPluginPart).send(sender);
+            Text.of("&b&m                         ").send(sender);
+            return true;
+        }
+
+        return false;
+    }
+
     @Override
-    public @NotNull List<@NotNull String> tab(@NotNull TabCompleteContext tab) {
+    public @NotNull List<String> tab(@NotNull TabCompleteContext tab) {
         var sender = tab.sender();
         var args = tab.args();
 

@@ -1,9 +1,12 @@
 package me.endergaming.plugins;
 
 import com.marcusslover.plus.lib.command.CommandManager;
+import me.endergaming.plugins.addons.mmocore.MMOManager;
 import me.endergaming.plugins.backend.AddonManager;
+import me.endergaming.plugins.backend.events.EventManager;
 import me.endergaming.plugins.commands.ManagerCommand;
 import me.endergaming.plugins.controllers.ConfigController;
+import me.endergaming.plugins.misc.Globals;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -18,7 +21,8 @@ public final class ServerAdditionsPlus extends JavaPlugin {
 
     public static final long FIVE_MINUTES_IN_TICKS = 6000;
     public static NamespacedKey KEY;
-    public static ServerAdditionsPlus PLUGIN;
+    private static ServerAdditionsPlus PLUGIN;
+    private CommandManager commandManager;
 
     public static void debug(String s) {
         if (ConfigController.DEBUG) {
@@ -34,15 +38,18 @@ public final class ServerAdditionsPlus extends JavaPlugin {
 //        this.configController.init();
 
         // Register Commands
-        var registry = CommandManager.get(this);
+        this.commandManager = CommandManager.get(this);
 
-        registry.register(new ManagerCommand(this));
+        this.commandManager.register(new ManagerCommand(this));
 
         // Create & Register AddonManager
         this.registerManagers();
+        Bukkit.getPluginManager().registerEvents(EventManager.get(), this);
     }
 
     private void registerManagers() {
+        new MMOManager(this, Globals.Addons.MMOManager.name, Globals.Plugins.MMOCORE);
+
 //        if (LUNAR_CLIENT) {
 //            new LCManager(this, Globals.Plugins.LUNAR_CLIENT, Globals.Addons.CMIManager.name);
 //        }
@@ -76,6 +83,7 @@ public final class ServerAdditionsPlus extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
         AddonManager.unregisterAll();
+        this.commandManager.clearCommands();
     }
 
     public static Logger logger() {

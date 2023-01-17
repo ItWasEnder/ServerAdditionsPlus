@@ -15,12 +15,19 @@ public class Globals {
         LEVELLED_MOBS("LevelledMobs"),
 
         AURELIUM_SKILLS("AureliumSkills"),
-        KONQUEST("Konquest");
+        KONQUEST("Konquest"),
+        MMOCORE("MMOCore"),
+        ;
 
         public final String name;
 
         Plugins(String value) {
             this.name = value;
+        }
+
+        @Override
+        public String toString() {
+            return this.name;
         }
     }
 
@@ -31,12 +38,19 @@ public class Globals {
         MFMManager("MFMManager"),
         LCManager("LCManager"),
         KQManager("KQManager"),
-        LMManager("LMManager");
+        LMManager("LMManager"),
+        MMOManager("MMOManager"),
+        ;
 
         public final String name;
 
         Addons(String value) {
             this.name = value;
+        }
+
+        @Override
+        public String toString() {
+            return this.name;
         }
     }
 }

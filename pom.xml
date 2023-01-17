@@ -17,23 +17,38 @@
     </properties>
 
     <dependencies>
+        <!-- Paper -->
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
-            <version>1.18.2-R0.1-SNAPSHOT</version>
+            <version>1.19.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <!-- Plus -->
         <dependency>
             <groupId>com.marcusslover</groupId>
             <artifactId>plus</artifactId>
-            <version>3.4-SNAPSHOT</version>
+            <version>3.3-SNAPSHOT</version>
+        </dependency>
+        <!-- MMOCore -->
+        <dependency>
+            <groupId>net.Indyuce</groupId>
+            <artifactId>MMOCore-API</artifactId>
+            <version>1.11.2-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
         <!-- PlaceholderAPI -->
         <dependency>
             <groupId>me.clip</groupId>
             <artifactId>placeholderapi</artifactId>
             <version>2.10.9</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

@@ -5,7 +5,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 public class ConfigController {
     private FileConfiguration config;
 
-    public static boolean DEBUG = false;
+    public static boolean DEBUG = true;
     public static boolean LUNAR_CLIENT = false;
     public static boolean MONEY_FROM_MOBS = false;
     public static boolean CMI = false;

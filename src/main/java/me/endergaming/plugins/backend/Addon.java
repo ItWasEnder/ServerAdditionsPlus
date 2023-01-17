@@ -1,9 +1,10 @@
 package me.endergaming.plugins.backend;
 
 import com.marcusslover.plus.lib.task.Task;
-import com.marcusslover.plus.lib.util.EventListener;
 import me.endergaming.plugins.ServerAdditionsPlus;
 import me.endergaming.plugins.backend.events.AddonRegisterEvent;
+import me.endergaming.plugins.backend.events.EventListener;
+import me.endergaming.plugins.backend.events.EventManager;
 import me.endergaming.plugins.backend.exceptions.AddonException;
 import me.endergaming.plugins.misc.Globals;
 import org.bukkit.Bukkit;
@@ -20,7 +21,7 @@ public abstract class Addon {
     private final ServerAdditionsPlus plugin;
     private final String name;
     private final String managerAlias;
-    private EventListener<PluginEnableEvent> pluginListener;
+    private com.marcusslover.plus.lib.util.EventListener<PluginEnableEvent> pluginListener;
 
     final String requiredPlugin;
     final List<String> requirements = new ArrayList<>();
@@ -32,9 +33,9 @@ public abstract class Addon {
         this.managerAlias = alias;
         this.requiredPlugin = reqPlugin.name;
         this.plugin = instance;
-        this.initRegister();
         // Add manager to AddonManager
         AddonManager.add(this);
+        this.initRegister();
     }
 
     protected Addon(@NotNull final ServerAdditionsPlus instance, @NotNull String alias, Globals.Plugins reqPlugin, String... manReqs) {
@@ -44,8 +45,10 @@ public abstract class Addon {
         this.requiredPlugin = reqPlugin.name;
         this.plugin = instance;
         this.requirements.addAll(Arrays.asList(manReqs));
+        // Add manager to AddonManager
+        AddonManager.add(this);
         // Create call-back listener for manager requirements
-        EventListener<AddonRegisterEvent> listener = new EventListener<>(AddonRegisterEvent.class, (l, e) -> {
+        com.marcusslover.plus.lib.util.EventListener<AddonRegisterEvent> listener = new com.marcusslover.plus.lib.util.EventListener<>(AddonRegisterEvent.class, (l, e) -> {
             ServerAdditionsPlus.debug("- - - - - - - - - -");
             ServerAdditionsPlus.debug("Addon: " + this.name);
             if (this.requirements.isEmpty()) {
@@ -75,8 +78,6 @@ public abstract class Addon {
         });
         // Timeout Event Listener
         Task.syncDelayed(task -> listener.unregister(), 20L * 120);
-        // Add manager to AddonManager
-        AddonManager.add(this);
     }
 
     private void initRegister() {
@@ -85,7 +86,7 @@ public abstract class Addon {
             if (this.pluginListener != null) {
                 return;
             }
-            this.pluginListener = new EventListener<>(PluginEnableEvent.class, new BiConsumer<>() {
+            this.pluginListener = new com.marcusslover.plus.lib.util.EventListener<>(PluginEnableEvent.class, new BiConsumer<>() {
                 // Timeout Event Listener
                 final Task timeout = Task.syncDelayed(task -> {
                     ServerAdditionsPlus.debug("- - - - - - - - - -");
@@ -97,7 +98,7 @@ public abstract class Addon {
                 }, 20L * 15);
 
                 @Override
-                public void accept(EventListener<PluginEnableEvent> l, PluginEnableEvent e) {
+                public void accept(com.marcusslover.plus.lib.util.EventListener<PluginEnableEvent> l, PluginEnableEvent e) {
                     if (Addon.this.registered) {
                         l.unregister();
                         return;
@@ -141,6 +142,10 @@ public abstract class Addon {
 
         try {
             this.onEnable();
+
+            if (this instanceof EventListener observer) {
+                EventManager.get().register(observer);
+            }
         } catch (AddonException e) {
             ServerAdditionsPlus.logger().severe("Failed to register " + this.name + ": " + Arrays.toString(e.getMessages().toArray()));
         }
