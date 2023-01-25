@@ -28,7 +28,7 @@
         <dependency>
             <groupId>com.marcusslover</groupId>
             <artifactId>plus</artifactId>
-            <version>3.3-SNAPSHOT</version>
+            <version>3.5-SNAPSHOT</version>
         </dependency>
         <!-- MMOCore -->
         <dependency>

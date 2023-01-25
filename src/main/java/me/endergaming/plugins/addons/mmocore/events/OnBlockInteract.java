@@ -1,9 +1,9 @@
 package me.endergaming.plugins.addons.mmocore.events;
 
+import com.marcusslover.plus.lib.events.EventListener;
+import com.marcusslover.plus.lib.events.annotations.Event;
 import com.marcusslover.plus.lib.text.Text;
 import me.endergaming.plugins.addons.mmocore.MMOManager;
-import me.endergaming.plugins.backend.events.Event;
-import me.endergaming.plugins.backend.events.EventListener;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.event.block.Action;

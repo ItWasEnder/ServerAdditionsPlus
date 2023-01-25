@@ -1,10 +1,11 @@
 package me.endergaming.plugins.backend;
 
+import com.marcusslover.plus.lib.events.EventHandler;
+import com.marcusslover.plus.lib.events.EventListener;
 import com.marcusslover.plus.lib.task.Task;
+import com.marcusslover.plus.lib.util.BundledListener;
 import me.endergaming.plugins.ServerAdditionsPlus;
 import me.endergaming.plugins.backend.events.AddonRegisterEvent;
-import me.endergaming.plugins.backend.events.EventListener;
-import me.endergaming.plugins.backend.events.EventManager;
 import me.endergaming.plugins.backend.exceptions.AddonException;
 import me.endergaming.plugins.misc.Globals;
 import org.bukkit.Bukkit;
@@ -21,7 +22,7 @@ public abstract class Addon {
     private final ServerAdditionsPlus plugin;
     private final String name;
     private final String managerAlias;
-    private com.marcusslover.plus.lib.util.EventListener<PluginEnableEvent> pluginListener;
+    private BundledListener<PluginEnableEvent> pluginListener;
 
     final String requiredPlugin;
     final List<String> requirements = new ArrayList<>();
@@ -48,7 +49,7 @@ public abstract class Addon {
         // Add manager to AddonManager
         AddonManager.add(this);
         // Create call-back listener for manager requirements
-        com.marcusslover.plus.lib.util.EventListener<AddonRegisterEvent> listener = new com.marcusslover.plus.lib.util.EventListener<>(AddonRegisterEvent.class, (l, e) -> {
+        BundledListener<AddonRegisterEvent> listener = new BundledListener<>(AddonRegisterEvent.class, (l, e) -> {
             ServerAdditionsPlus.debug("- - - - - - - - - -");
             ServerAdditionsPlus.debug("Addon: " + this.name);
             if (this.requirements.isEmpty()) {
@@ -86,7 +87,7 @@ public abstract class Addon {
             if (this.pluginListener != null) {
                 return;
             }
-            this.pluginListener = new com.marcusslover.plus.lib.util.EventListener<>(PluginEnableEvent.class, new BiConsumer<>() {
+            this.pluginListener = new BundledListener<>(PluginEnableEvent.class, new BiConsumer<>() {
                 // Timeout Event Listener
                 final Task timeout = Task.syncDelayed(task -> {
                     ServerAdditionsPlus.debug("- - - - - - - - - -");
@@ -98,7 +99,7 @@ public abstract class Addon {
                 }, 20L * 15);
 
                 @Override
-                public void accept(com.marcusslover.plus.lib.util.EventListener<PluginEnableEvent> l, PluginEnableEvent e) {
+                public void accept(BundledListener<PluginEnableEvent> l, PluginEnableEvent e) {
                     if (Addon.this.registered) {
                         l.unregister();
                         return;
@@ -143,8 +144,8 @@ public abstract class Addon {
         try {
             this.onEnable();
 
-            if (this instanceof EventListener observer) {
-                EventManager.get().register(observer);
+            if (this instanceof EventListener BundledListener) {
+                EventHandler.get().subscribe(BundledListener);
             }
         } catch (AddonException e) {
             ServerAdditionsPlus.logger().severe("Failed to register " + this.name + ": " + Arrays.toString(e.getMessages().toArray()));

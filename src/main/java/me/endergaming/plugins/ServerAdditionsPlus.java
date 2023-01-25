@@ -3,12 +3,12 @@ package me.endergaming.plugins;
 import com.marcusslover.plus.lib.command.CommandManager;
 import me.endergaming.plugins.addons.mmocore.MMOManager;
 import me.endergaming.plugins.backend.AddonManager;
-import me.endergaming.plugins.backend.events.EventManager;
 import me.endergaming.plugins.commands.ManagerCommand;
 import me.endergaming.plugins.controllers.ConfigController;
 import me.endergaming.plugins.misc.Globals;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
+import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
@@ -44,7 +44,6 @@ public final class ServerAdditionsPlus extends JavaPlugin {
 
         // Create & Register AddonManager
         this.registerManagers();
-        Bukkit.getPluginManager().registerEvents(EventManager.get(), this);
     }
 
     private void registerManagers() {
@@ -84,6 +83,10 @@ public final class ServerAdditionsPlus extends JavaPlugin {
         // Plugin shutdown logic
         AddonManager.unregisterAll();
         this.commandManager.clearCommands();
+    }
+
+    public CommandManager getCommandManager() {
+        return this.commandManager;
     }
 
     public static Logger logger() {

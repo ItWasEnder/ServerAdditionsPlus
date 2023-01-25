@@ -1,10 +1,14 @@
 package me.endergaming.plugins.misc;
 
+import java.util.Random;
+
 public class Globals {
     public static final String CURRENCY_1 = "MC";
     public static final String PLUGIN_KEY = "sap";
 
     public static final String PREFIX = "&7[&a\uD83E\uDDEA&7] ";
+
+    public static final Random RANDOM = new Random();
 
     public enum Plugins {
         CMI("CMI"),
