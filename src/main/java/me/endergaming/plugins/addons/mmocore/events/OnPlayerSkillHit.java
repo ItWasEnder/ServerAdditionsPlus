@@ -8,6 +8,7 @@ import io.lumine.mythic.lib.api.event.PlayerAttackEvent;
 import io.lumine.mythic.lib.damage.DamageType;
 import me.endergaming.plugins.ServerAdditionsPlus;
 import me.endergaming.plugins.addons.mmocore.MMOManager;
+import me.endergaming.plugins.misc.Globals;
 import net.Indyuce.mmocore.api.player.PlayerData;
 import net.Indyuce.mmocore.experience.EXPSource;
 import net.kyori.adventure.util.Ticks;
@@ -28,6 +29,10 @@ public class OnPlayerSkillHit implements EventListener {
 
     @Event
     private void onPlayerHit(PlayerAttackEvent event) {
+        if (!Globals.Addons.MMOManager.get().isRegistered()) {
+            return;
+        }
+
         var damageData = event.getAttack().getDamage();
         var skillDamage = damageData.getDamage(DamageType.MAGIC);
         var player = event.getAttacker().getPlayer();

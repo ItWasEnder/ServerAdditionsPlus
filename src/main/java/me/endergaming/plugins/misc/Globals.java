@@ -1,6 +1,10 @@
 package me.endergaming.plugins.misc;
 
+import me.endergaming.plugins.backend.Addon;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Random;
+import java.util.function.Supplier;
 
 public class Globals {
     public static final String CURRENCY_1 = "MC";
@@ -21,7 +25,7 @@ public class Globals {
         AURELIUM_SKILLS("AureliumSkills"),
         KONQUEST("Konquest"),
         MMOCORE("MMOCore"),
-        ;
+        NONE("");
 
         public final String name;
 
@@ -44,17 +48,41 @@ public class Globals {
         KQManager("KQManager"),
         LMManager("LMManager"),
         MMOManager("MMOManager"),
+        AnvilManager("AnvilManager");
         ;
 
-        public final String name;
+        private final String name;
+        private Supplier<? extends Addon> supplier;
 
         Addons(String value) {
             this.name = value;
+            this.supplier = null;
         }
 
         @Override
         public String toString() {
             return this.name;
+        }
+
+        public String getName() {
+            return this.name;
+        }
+
+        public void supply(Supplier<? extends Addon> supplier) {
+            if (this.supplier != null) {
+                return;
+            }
+
+            this.supplier = supplier;
+        }
+
+        public @Nullable Addon get() {
+            if (this.supplier == null) {
+                return null;
+            }
+            var addon = this.supplier.get();
+
+            return addon.isRegistered() ? addon : null;
         }
     }
 }

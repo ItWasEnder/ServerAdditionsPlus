@@ -1,6 +1,7 @@
 package me.endergaming.plugins;
 
 import com.marcusslover.plus.lib.command.CommandManager;
+import me.endergaming.plugins.addons.anvilcontrol.AnvilManager;
 import me.endergaming.plugins.addons.mmocore.MMOManager;
 import me.endergaming.plugins.backend.AddonManager;
 import me.endergaming.plugins.commands.ManagerCommand;
@@ -8,7 +9,6 @@ import me.endergaming.plugins.controllers.ConfigController;
 import me.endergaming.plugins.misc.Globals;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
-import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
@@ -47,7 +47,11 @@ public final class ServerAdditionsPlus extends JavaPlugin {
     }
 
     private void registerManagers() {
-        new MMOManager(this, Globals.Addons.MMOManager.name, Globals.Plugins.MMOCORE);
+        Globals.Addons.MMOManager.supply(() ->
+                new MMOManager(this, Globals.Addons.MMOManager.getName(), Globals.Plugins.MMOCORE));
+
+        Globals.Addons.AnvilManager.supply(() ->
+                new AnvilManager(this, Globals.Addons.AnvilManager.getName(), Globals.Plugins.NONE));
 
 //        if (LUNAR_CLIENT) {
 //            new LCManager(this, Globals.Plugins.LUNAR_CLIENT, Globals.Addons.CMIManager.name);

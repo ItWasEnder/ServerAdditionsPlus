@@ -185,7 +185,7 @@ public abstract class Addon {
     }
 
     public boolean hasReqPlugin() {
-        return ServerAdditionsPlus.isEnabled(this.requiredPlugin);
+        return this.requiredPlugin.isBlank() || ServerAdditionsPlus.isEnabled(this.requiredPlugin);
     }
 
     public boolean requirementsNotFilled() {
